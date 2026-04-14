@@ -3,215 +3,396 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cute-Tech Profile</title>
+<title>Cyber-Pastel Pink Profile</title>
 <style>
 /* ── 폰트 (기존 유지) ── */
 @font-face { font-family: 'Paperlogy'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
 @font-face { font-family: 'Paperlogy'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
 
-/* ── 변수 수정 (귀엽지만 테크니컬한 다크 네이비 + 핑크 + 시안) ── */
+/* ── 변수 수정 (화이트/파스텔 베이스 + 핫핑크 테크) ── */
 :root {
-  --bg-deep: #0f172a;      /* 베이스 다크 네이비 */
-  --panel-bg: #1e293b;     /* 패널 배경 */
-  --primary-cyan: #22d3ee;  /* 테크니컬 시안 */
-  --point-pink: #f472b6;   /* 귀여운 핑크 */
-  --border-line: #334155;
-  --text-main: #f1f5f9;
-  --text-dim: #94a3b8;
-  --neon-glow: 0 0 15px rgba(34, 211, 238, 0.3);
+  --bg-main: #fff5f9;       /* 연한 파스텔 핑크 배경 */
+  --panel-bg: #ffffff;      /* 패널 내부 화이트 */
+  --primary-pink: #ff69b4;  /* 핫핑크 (테크니컬 포인트) */
+  --sub-pink: #fce4f1;      /* 연한 핑크 (배경/라인) */
+  --text-main: #4a148c;     /* 진한 보라색 (가독성/귀여움) */
+  --text-dim: #880e4f;      /* 연한 보라/핑크 */
+  --border-line: #ffb6c1;   /* 연한 핑크 보더 */
+  --neon-glow: 0 0 10px rgba(255, 105, 180, 0.4);
 }
 
 /* ── 기본 설정 ── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Paperlogy', sans-serif;
-  background: var(--bg-deep);
+  background: var(--bg-main);
   color: var(--text-main);
   line-height: 1.6;
   padding: 20px;
 }
 .container { max-width: 800px; margin: 0 auto; }
 
-/* ── 섹션 헤더 (윈도우 창 타이틀 느낌) ── */
+/* ── 섹션 헤더 (윈도우 상단 바 느낌) ── */
 .section-title {
-  background: var(--primary-cyan);
-  color: var(--bg-deep);
+  background: var(--primary-pink);
+  color: #ffffff;
   font-weight: 700;
-  font-size: 14px;
-  padding: 4px 12px;
-  display: inline-block;
+  font-size: 13px;
+  padding: 6px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-bottom: -2px;
-  border-radius: 8px 8px 0 0;
+  border-radius: 10px 10px 0 0;
+  border: 2px solid var(--primary-pink);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
+.title-deco { display: flex; gap: 4px; }
+.title-deco span { width: 8px; height: 8px; border-radius: 50%; background: #fff; opacity: 0.7; }
 
 section { 
     margin-bottom: 40px; 
     background: var(--panel-bg);
-    border: 2px solid var(--primary-cyan);
+    border: 2px solid var(--primary-pink);
     border-radius: 0 12px 12px 12px;
     padding: 24px;
-    box-shadow: var(--neon-glow);
+    box-shadow: 4px 4px 0 var(--sub-pink);
 }
 
-/* ── 프로필 (스테이터스 창 스타일) ── */
+/* ── 프로필 (상태창 스타일) ── */
 .profile-card {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 24px;
 }
-.profile-avatar {
+.avatar-frame {
+  position: relative;
   width: 100px; height: 100px;
-  border-radius: 12px;
-  background: var(--bg-deep);
-  border: 2px dashed var(--point-pink);
+  border-radius: 50%;
+  border: 4px solid var(--primary-pink);
+  background: #fff;
   display: flex; align-items: center; justify-content: center;
-  font-size: 40px;
+  font-size: 45px;
   animation: float 3s ease-in-out infinite;
+  box-shadow: var(--neon-glow);
 }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
 }
-.profile-name { font-size: 24px; color: var(--point-pink); font-weight: 700; }
+.avatar-label {
+  position: absolute;
+  bottom: -8px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-main);
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.profile-info { flex: 1; }
+.profile-name { font-size: 26px; color: var(--primary-pink); font-weight: 700; }
+.tag-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
 .tag {
-  font-size: 11px; padding: 2px 8px; border: 1px solid var(--primary-cyan);
-  color: var(--primary-cyan); border-radius: 4px; margin-right: 4px;
+  font-size: 11px; padding: 3px 10px; background: var(--sub-pink);
+  color: var(--primary-pink); border-radius: 4px; border: 1px solid var(--primary-pink);
+  font-weight: 700;
 }
 
-/* ── 안내사항 (로그 창 스타일) ── */
+/* ── 안내사항 (로그창 스타일) ── */
 .notice-card ul { list-style: none; }
 .notice-card li {
   font-size: 13px; color: var(--text-main);
-  padding: 8px 0; border-bottom: 1px solid var(--border-line);
+  padding: 10px 0; border-bottom: 1px dashed var(--border-line);
+  display: flex; align-items: start;
 }
-.notice-card li::before { content: ">_ "; color: var(--primary-cyan); }
+.notice-card li::before { 
+    content: "♥"; 
+    color: var(--primary-pink); 
+    margin-right: 10px; 
+    font-size: 11px;
+    margin-top: 2px;
+}
 
-/* ── 가격 안내 (스킬 트리/데이터 시트 스타일) ── */
+/* ── 가격 안내 (메뉴/데이터 테이블 스타일) ── */
+.menu-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .menu-row {
-  display: flex; justify-content: space-between;
-  padding: 12px; margin-bottom: 8px;
-  background: rgba(15, 23, 42, 0.5);
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 15px;
+  background: var(--sub-pink);
   border-radius: 8px;
-  border-left: 4px solid var(--point-pink);
+  border: 1px solid var(--primary-pink);
+  transition: 0.2s;
 }
-.menu-item-name { font-weight: 700; color: var(--primary-cyan); }
-.menu-item-price { font-weight: 700; color: var(--point-pink); }
+.menu-row:hover { background: #fff; box-shadow: var(--neon-glow); }
+.menu-item-name { font-weight: 700; color: var(--text-main); font-size: 15px; }
+.menu-item-price { font-weight: 700; color: var(--primary-pink); font-size: 16px; }
 
-/* ── 포트폴리오 (갤러리 칩 스타일) ── */
-.pf-tabs { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+/* ── 포트폴리오 (스크립트 연결됨) ── */
+.pf-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; justify-content: center; }
 .pf-tab {
-  background: transparent; border: 1px solid var(--primary-cyan);
-  color: var(--primary-cyan); padding: 5px 15px; border-radius: 20px;
-  cursor: pointer; font-size: 12px;
+  background: #fff; border: 2px solid var(--primary-pink);
+  color: var(--primary-pink); padding: 6px 16px; border-radius: 20px;
+  cursor: pointer; font-size: 12px; font-weight: 700; transition: 0.2s;
 }
-.pf-tab.active { background: var(--primary-cyan); color: var(--bg-deep); }
+.pf-tab.active, .pf-tab:hover { background: var(--primary-pink); color: #fff; }
 
-.pf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.pf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.pf-item { cursor: pointer; text-align: center; }
 .pf-thumb {
-  width: 100%; aspect-ratio: 1; border-radius: 8px; overflow: hidden;
-  border: 1px solid var(--border-line);
+  width: 100%; aspect-ratio: 1; border-radius: 12px; overflow: hidden;
+  border: 2px solid var(--primary-pink);
+  position: relative;
+  margin-bottom: 8px;
+  background: var(--sub-pink);
 }
-.pf-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.pf-thumb img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+.pf-item:hover .pf-thumb img { transform: scale(1.05); }
+.pf-cat-label {
+  position: absolute; top: 6px; right: 6px;
+  background: rgba(255, 105, 180, 0.8);
+  color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px;
+}
+.pf-title { font-size: 12px; color: var(--text-main); font-weight: 700; }
+
+/* 페이지네이션 (기존 로직 유지) */
+.pagination { display: flex; justify-content: center; gap: 6px; margin-top: 24px; }
+.pg-btn, .pg-num {
+  padding: 6px 12px; border: 2px solid var(--primary-pink);
+  background: #fff; color: var(--primary-pink); border-radius: 8px;
+  cursor: pointer; font-size: 12px; font-weight: 700; transition: 0.2s;
+}
+.pg-num.active { background: var(--primary-pink); color: #fff; }
 
 /* ── 문의 양식 (커맨드 입력창 스타일) ── */
-.letter-body { display: flex; flex-direction: column; gap: 15px; }
-.letter-label { font-size: 12px; color: var(--primary-cyan); display: block; margin-bottom: 5px; }
+.letter-body { display: flex; flex-direction: column; gap: 18px; }
+.input-group { position: relative; }
+.letter-label { font-size: 11px; color: var(--primary-pink); display: block; margin-bottom: 6px; font-weight: 700; }
 .letter-input, .letter-select, .letter-textarea {
-  width: 100%; background: var(--bg-deep); border: 1px solid var(--border-line);
-  padding: 10px; color: #fff; border-radius: 4px; outline: none;
+  width: 100%; background: #fff; border: 2px solid var(--primary-pink);
+  padding: 12px; color: var(--text-main); border-radius: 8px; outline: none;
+  font-family: 'Paperlogy', sans-serif; font-size: 13px;
 }
-.letter-input:focus { border-color: var(--point-pink); }
+.letter-input:focus, .letter-textarea:focus { box-shadow: var(--neon-glow); }
+.letter-textarea { resize: vertical; min-height: 100px; }
+
+/* 복사 버튼 (스위치형 느낌) */
+.copy-wrap { text-align: center; margin-top: 20px; }
 .copy-btn {
-  background: var(--point-pink); color: white; border: none;
-  padding: 15px; border-radius: 8px; font-weight: 700; cursor: pointer;
-  box-shadow: 0 4px 0 #be185d; transition: 0.1s;
+  background: var(--text-main); color: #fff; border: none;
+  padding: 16px 40px; border-radius: 8px; font-weight: 700; cursor: pointer;
+  font-size: 14px; text-transform: uppercase; letter-spacing: 1px;
+  transition: 0.1s;
+  box-shadow: 4px 4px 0 var(--primary-pink);
 }
-.copy-btn:active { transform: translateY(3px); box-shadow: none; }
+.copy-btn:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--primary-pink); }
+.copy-toast {
+  position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+  background: rgba(74, 20, 140, 0.9); color: #fff;
+  padding: 10px 20px; border-radius: 8px; font-size: 12px;
+  opacity: 0; pointer-events: none; transition: 0.3s;
+}
+.copy-toast.show { opacity: 1; bottom: 40px; }
 
 /* 반응형 */
 @media (max-width: 600px) {
   .pf-grid { grid-template-columns: repeat(2, 1fr); }
   .profile-card { flex-direction: column; text-align: center; }
+  .tag-wrap { justify-content: center; }
 }
 </style>
 </head>
 <body>
 
 <div class="container">
-  <div class="section-title">User_Status</div>
+  <div class="section-title">
+    <span>USER_STATUS</span>
+    <div class="title-deco"><span></span><span></span><span></span></div>
+  </div>
   <section>
     <div class="profile-card">
-      <div class="profile-avatar">👾</div>
+      <div class="avatar-frame">
+        🌸
+        <div class="avatar-label">LV.99 ARTIST</div>
+      </div>
       <div class="profile-info">
-        <div class="profile-name">ARTIST_ID: 핑크냥</div>
-        <p style="color:var(--text-dim); font-size:13px; margin: 8px 0;">Lv.99 고퀄리티 지향형 일러스트레이터</p>
+        <div class="profile-name">닉네임_작가님</div>
+        <p style="color:var(--text-dim); font-size:13px; margin: 6px 0;">귀엽고 아기자기한 그림을 그리는 작가입니다 🌸</p>
         <div class="tag-wrap">
-          <span class="tag">#SD_MASTER</span><span class="tag">#LIVE2D</span>
+          <span class="tag">#SD캐릭터</span><span class="tag">#버추얼</span><span class="tag">#이모티콘</span>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-title">System_Logs</div>
+  <div class="section-title">
+    <span>SYSTEM_LOGS</span>
+    <div class="title-deco"><span></span><span></span><span></span></div>
+  </div>
   <section class="notice-card">
     <ul>
       <li>Copyright © Artist. All rights reserved.</li>
-      <li>작업 기간: 최대 30일 이내 (협의 가능)</li>
+      <li>작업 기간: 최소 3일 ~ 최대 30일</li>
       <li>수정 횟수: 컨펌 시 총 2회 제공</li>
+      <li>상업적 이용은 별도 문의 부탁드려요!</li>
     </ul>
   </section>
 
-  <div class="section-title">Data_Price</div>
+  <div class="section-title">
+    <span>PRICE_MENU</span>
+    <div class="title-deco"><span></span><span></span><span></span></div>
+  </div>
   <section>
-    <div class="menu-row">
-      <div class="menu-item-name">Type-A. Full Body</div>
-      <div class="menu-item-price">50,000 KRW</div>
-    </div>
-    <div class="menu-row">
-      <div class="menu-item-name">Type-B. SD Character</div>
-      <div class="menu-item-price">25,000 KRW</div>
+    <div class="menu-grid">
+      <div class="menu-row">
+        <div class="menu-item-name">Type-A. Half Body</div>
+        <div class="menu-item-price">30,000 KRW</div>
+      </div>
+      <div class="menu-row">
+        <div class="menu-item-name">Type-B. Full Body</div>
+        <div class="menu-item-price">50,000 KRW</div>
+      </div>
     </div>
   </section>
 
-  <div class="section-title">Archive_Gallery</div>
+  <div class="section-title">
+    <span>DATABASE_GALLERY</span>
+    <div class="title-deco"><span></span><span></span><span></span></div>
+  </div>
   <section>
     <div class="pf-tabs">
       <button class="pf-tab active" onclick="filterCat('ALL')">ALL</button>
       <button class="pf-tab" onclick="filterCat('일러스트')">ILLUST</button>
-      <button class="pf-tab" onclick="filterCat('SD')">SD</button>
+      <button class="pf-tab" onclick="filterCat('캐릭터')">CHARACTER</button>
     </div>
     <div class="pf-grid" id="pfGrid"></div>
-    </section>
+    
+    <div class="pagination">
+      <button class="pg-btn" onclick="changePg(curPage - 1)">&#8249;</button>
+      <div id="pgNums" style="display:flex;gap:6px;"></div>
+      <button class="pg-btn" onclick="changePg(curPage + 1)">&#8250;</button>
+    </div>
+  </section>
 
-  <div class="section-title">Input_Command</div>
+  <div class="section-title">
+    <span>INPUT_COMMAND</span>
+    <div class="title-deco"><span></span><span></span><span></span></div>
+  </div>
   <section>
     <div class="letter-body">
-      <div>
+      <div class="input-group">
         <label class="letter-label">COMMAND_01: NICKNAME</label>
         <input class="letter-input" id="fm_nick" type="text" placeholder="입력 대기 중...">
       </div>
-      <div>
+      <div class="input-group">
         <label class="letter-label">COMMAND_02: TYPE</label>
         <select class="letter-select" id="fm_type">
-            <option>Type-A</option>
-            <option>Type-B</option>
+            <option>Type-A (반신)</option>
+            <option>Type-B (전신)</option>
         </select>
       </div>
-      <div>
+      <div class="input-group">
         <label class="letter-label">COMMAND_03: DESCRIPTION</label>
         <textarea class="letter-textarea" id="fm_concept" rows="4"></textarea>
       </div>
-      <button class="copy-btn" onclick="copyForm()">EXECUTE: COPY_COMMAND</button>
+      
+      <div class="copy-wrap">
+        <button class="copy-btn" onclick="copyForm()">✉️ Execute: COPY_COMMAND</button>
+      </div>
     </div>
   </section>
 </div>
 
+<div class="copy-toast" id="copyToast">📋 명령 복사 완료! 쪽지로 보내주세요 ♥</div>
+
 <script>
-// 기존 주신 1차 템플릿의 스크립트(filterCat, renderPf, copyForm 등)를 
-// 여기에 그대로 붙여넣으시면 완벽하게 작동합니다.
-// 스타일 클래스명들을 기존 코드와 호환되게 맞춰두었습니다.
+/* ============================
+   포트폴리오 데이터 (★작업자 수정용★)
+============================= */
+const pfData = [
+  // 예시 데이터: img 주소는 실제 URL로 교체하세요!
+  { cat: '일러스트', title: '예시 작품 01', img: 'https://via.placeholder.com/300/fce4f1/ff69b4?text=IMAGE' },
+  { cat: '캐릭터', title: '예시 작품 02', img: 'https://via.placeholder.com/300/fce4f1/ff69b4?text=IMAGE' },
+  { cat: '일러스트', title: '예시 작품 03', img: 'https://via.placeholder.com/300/fce4f1/ff69b4?text=IMAGE' },
+];
+
+let curCat = 'ALL';
+let curPage = 1;
+const perPage = 6; // 한 페이지에 보여줄 작품 수
+
+/* ============================
+   포트폴리오 로직 (★유지★)
+============================= */
+function filterCat(cat) {
+  curCat = cat; curPage = 1;
+  document.querySelectorAll('.pf-tab').forEach(b => {
+    b.classList.toggle('active', b.textContent === cat);
+  });
+  renderPf();
+}
+
+function renderPf() {
+  const grid = document.getElementById('pfGrid');
+  const pgNums = document.getElementById('pgNums');
+  const filtered = curCat === 'ALL' ? pfData : pfData.filter(i => i.cat === curCat);
+  const total = Math.ceil(filtered.length / perPage) || 1;
+  const paged = filtered.slice((curPage - 1) * perPage, curPage * perPage);
+
+  if (pfData.length === 0) {
+    grid.innerHTML = '<div style="grid-column:span 3;text-align:center;padding:60px 0;color:#ccc;font-size:14px;">작품을 추가해 주세요 🌸</div>';
+  } else {
+    grid.innerHTML = paged.map(i => `
+      <div class="pf-item">
+        <div class="pf-thumb">
+          <div class="pf-cat-label">${i.cat}</div>
+          <img src="${i.img}" alt="${i.title}" loading="lazy">
+        </div>
+        <div class="pf-title">${i.title}</div>
+      </div>
+    `).join('');
+  }
+
+  /* 페이지 번호 */
+  pgNums.innerHTML = '';
+  for (let i = 1; i <= total; i++) {
+    pgNums.innerHTML += `<div class="pg-num ${i === curPage ? 'active' : ''}" onclick="changePg(${i})">${i}</div>`;
+  }
+}
+
+function changePg(p) {
+  const filtered = curCat === 'ALL' ? pfData : pfData.filter(i => i.cat === curCat);
+  const total = Math.ceil(filtered.length / perPage) || 1;
+  if (p < 1 || p > total) return;
+  curPage = p; renderPf();
+}
+
+/* ============================
+   문의 양식 복사 (★유지★)
+============================= */
+async function copyForm() {
+  const nick = document.getElementById('fm_nick').value || '없음';
+  const type = document.getElementById('fm_type').value || '없음';
+  const concept = document.getElementById('fm_concept').value || '없음';
+
+  const text = `[문의 양식 - COMMAND]
+1. 닉네임: ${nick}
+2. 의뢰 종류: ${type}
+3. 콘셉트: ${concept}`;
+
+  try {
+    await navigator.clipboard.writeText(text);
+    const toast = document.getElementById('copyToast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+  } catch (e) {
+    alert('복사가 차단되었습니다.\niframe에 allow="clipboard-write" 속성을 추가해주세요.');
+  }
+}
+
+// 초기화
+renderPf();
 </script>
 </body>
 </html>
