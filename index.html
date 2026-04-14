@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cute-Tech Profile</title>
+<style>
+/* ── 폰트 (기존 유지) ── */
+@font-face { font-family: 'Paperlogy'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-4Regular.woff2') format('woff2'); font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Paperlogy'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-3@1.0/Paperlogy-7Bold.woff2') format('woff2'); font-weight: 700; font-display: swap; }
+
+/* ── 변수 수정 (귀엽지만 테크니컬한 다크 네이비 + 핑크 + 시안) ── */
+:root {
+  --bg-deep: #0f172a;      /* 베이스 다크 네이비 */
+  --panel-bg: #1e293b;     /* 패널 배경 */
+  --primary-cyan: #22d3ee;  /* 테크니컬 시안 */
+  --point-pink: #f472b6;   /* 귀여운 핑크 */
+  --border-line: #334155;
+  --text-main: #f1f5f9;
+  --text-dim: #94a3b8;
+  --neon-glow: 0 0 15px rgba(34, 211, 238, 0.3);
+}
+
+/* ── 기본 설정 ── */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Paperlogy', sans-serif;
+  background: var(--bg-deep);
+  color: var(--text-main);
+  line-height: 1.6;
+  padding: 20px;
+}
+.container { max-width: 800px; margin: 0 auto; }
+
+/* ── 섹션 헤더 (윈도우 창 타이틀 느낌) ── */
+.section-title {
+  background: var(--primary-cyan);
+  color: var(--bg-deep);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 4px 12px;
+  display: inline-block;
+  margin-bottom: -2px;
+  border-radius: 8px 8px 0 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+section { 
+    margin-bottom: 40px; 
+    background: var(--panel-bg);
+    border: 2px solid var(--primary-cyan);
+    border-radius: 0 12px 12px 12px;
+    padding: 24px;
+    box-shadow: var(--neon-glow);
+}
+
+/* ── 프로필 (스테이터스 창 스타일) ── */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.profile-avatar {
+  width: 100px; height: 100px;
+  border-radius: 12px;
+  background: var(--bg-deep);
+  border: 2px dashed var(--point-pink);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 40px;
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.profile-name { font-size: 24px; color: var(--point-pink); font-weight: 700; }
+.tag {
+  font-size: 11px; padding: 2px 8px; border: 1px solid var(--primary-cyan);
+  color: var(--primary-cyan); border-radius: 4px; margin-right: 4px;
+}
+
+/* ── 안내사항 (로그 창 스타일) ── */
+.notice-card ul { list-style: none; }
+.notice-card li {
+  font-size: 13px; color: var(--text-main);
+  padding: 8px 0; border-bottom: 1px solid var(--border-line);
+}
+.notice-card li::before { content: ">_ "; color: var(--primary-cyan); }
+
+/* ── 가격 안내 (스킬 트리/데이터 시트 스타일) ── */
+.menu-row {
+  display: flex; justify-content: space-between;
+  padding: 12px; margin-bottom: 8px;
+  background: rgba(15, 23, 42, 0.5);
+  border-radius: 8px;
+  border-left: 4px solid var(--point-pink);
+}
+.menu-item-name { font-weight: 700; color: var(--primary-cyan); }
+.menu-item-price { font-weight: 700; color: var(--point-pink); }
+
+/* ── 포트폴리오 (갤러리 칩 스타일) ── */
+.pf-tabs { display: flex; gap: 8px; margin-bottom: 15px; flex-wrap: wrap; }
+.pf-tab {
+  background: transparent; border: 1px solid var(--primary-cyan);
+  color: var(--primary-cyan); padding: 5px 15px; border-radius: 20px;
+  cursor: pointer; font-size: 12px;
+}
+.pf-tab.active { background: var(--primary-cyan); color: var(--bg-deep); }
+
+.pf-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.pf-thumb {
+  width: 100%; aspect-ratio: 1; border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border-line);
+}
+.pf-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ── 문의 양식 (커맨드 입력창 스타일) ── */
+.letter-body { display: flex; flex-direction: column; gap: 15px; }
+.letter-label { font-size: 12px; color: var(--primary-cyan); display: block; margin-bottom: 5px; }
+.letter-input, .letter-select, .letter-textarea {
+  width: 100%; background: var(--bg-deep); border: 1px solid var(--border-line);
+  padding: 10px; color: #fff; border-radius: 4px; outline: none;
+}
+.letter-input:focus { border-color: var(--point-pink); }
+.copy-btn {
+  background: var(--point-pink); color: white; border: none;
+  padding: 15px; border-radius: 8px; font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 0 #be185d; transition: 0.1s;
+}
+.copy-btn:active { transform: translateY(3px); box-shadow: none; }
+
+/* 반응형 */
+@media (max-width: 600px) {
+  .pf-grid { grid-template-columns: repeat(2, 1fr); }
+  .profile-card { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="section-title">User_Status</div>
+  <section>
+    <div class="profile-card">
+      <div class="profile-avatar">👾</div>
+      <div class="profile-info">
+        <div class="profile-name">ARTIST_ID: 핑크냥</div>
+        <p style="color:var(--text-dim); font-size:13px; margin: 8px 0;">Lv.99 고퀄리티 지향형 일러스트레이터</p>
+        <div class="tag-wrap">
+          <span class="tag">#SD_MASTER</span><span class="tag">#LIVE2D</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-title">System_Logs</div>
+  <section class="notice-card">
+    <ul>
+      <li>Copyright © Artist. All rights reserved.</li>
+      <li>작업 기간: 최대 30일 이내 (협의 가능)</li>
+      <li>수정 횟수: 컨펌 시 총 2회 제공</li>
+    </ul>
+  </section>
+
+  <div class="section-title">Data_Price</div>
+  <section>
+    <div class="menu-row">
+      <div class="menu-item-name">Type-A. Full Body</div>
+      <div class="menu-item-price">50,000 KRW</div>
+    </div>
+    <div class="menu-row">
+      <div class="menu-item-name">Type-B. SD Character</div>
+      <div class="menu-item-price">25,000 KRW</div>
+    </div>
+  </section>
+
+  <div class="section-title">Archive_Gallery</div>
+  <section>
+    <div class="pf-tabs">
+      <button class="pf-tab active" onclick="filterCat('ALL')">ALL</button>
+      <button class="pf-tab" onclick="filterCat('일러스트')">ILLUST</button>
+      <button class="pf-tab" onclick="filterCat('SD')">SD</button>
+    </div>
+    <div class="pf-grid" id="pfGrid"></div>
+    </section>
+
+  <div class="section-title">Input_Command</div>
+  <section>
+    <div class="letter-body">
+      <div>
+        <label class="letter-label">COMMAND_01: NICKNAME</label>
+        <input class="letter-input" id="fm_nick" type="text" placeholder="입력 대기 중...">
+      </div>
+      <div>
+        <label class="letter-label">COMMAND_02: TYPE</label>
+        <select class="letter-select" id="fm_type">
+            <option>Type-A</option>
+            <option>Type-B</option>
+        </select>
+      </div>
+      <div>
+        <label class="letter-label">COMMAND_03: DESCRIPTION</label>
+        <textarea class="letter-textarea" id="fm_concept" rows="4"></textarea>
+      </div>
+      <button class="copy-btn" onclick="copyForm()">EXECUTE: COPY_COMMAND</button>
+    </div>
+  </section>
+</div>
+
+<script>
+// 기존 주신 1차 템플릿의 스크립트(filterCat, renderPf, copyForm 등)를 
+// 여기에 그대로 붙여넣으시면 완벽하게 작동합니다.
+// 스타일 클래스명들을 기존 코드와 호환되게 맞춰두었습니다.
+</script>
+</body>
+</html>
